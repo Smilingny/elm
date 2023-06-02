@@ -8,21 +8,16 @@
     <link rel="stylesheet" href="css/iconfont/iconfont.css">
 </head>
 <body>
-<!-- 总容器 -->
-<section class="h-full flex flex-col">
-    <!--        页面主体-->
-    <main class="flex-grow overflow-auto">
-        <header class="bg-sky-400">
-            <div class="text-white text-[1.5rem] p-2">
-                <i class="i material-symbols:pin-drop-rounded"></i>
-                沈阳市规划大厦
-            </div>
-            <div class="p-2">
-                <div class="bg-white text-gray-200 p-2 rounded text-center">
-                    搜索商家名、商品名
-                </div>
-            </div>
-        </header>
+    <div class="text-white text-[1.5rem] p-2 bg-sky-400" id="location">
+        <i class="i material-symbols:pin-drop-rounded"></i>
+        沈阳市规划大厦
+    </div>
+    <div class="p-2 bg-sky-400" id="search">
+        <div class="bg-white text-gray-200 p-2 rounded text-center">
+            搜索商家名、商品名
+        </div>
+    </div>
+
 
         <ul class=" flex flex-wrap text-center text-xs leading- p-4 gap-x-5">
             <li class="w-14 block" onclick="location.href='businessList.html'">
@@ -330,10 +325,9 @@
 
 
         </ul>
-    </main>
 
     <!--        页脚导航栏-->
-    <footer class="flex-shrink-0 h-16 border-t border-t-gray-400 text-gray-600 bg-gray-300  flex justify-around items-center">
+    <footer class="fixed bottom-0 w-full h-16 border-t border-t-gray-400 text-gray-600 bg-gray-300  flex justify-around items-center">
         <div class="text-center leading-none" onclick="location.href='index.html'">
             <i class="i ph:house-fill text-2xl"></i>
             <div>首页</div>
@@ -351,6 +345,20 @@
             <div>我的</div>
         </div>
     </footer>
-</section>
+<script>
+        window.addEventListener('scroll', function() {
+        let firstDiv = document.getElementById('location');
+        let secondDiv = document.getElementById('search');
+
+        let rect = firstDiv.getBoundingClientRect();
+
+        if (rect.bottom <= 0) {
+            secondDiv.classList.add('sticky', 'top-0');
+        } else {
+            secondDiv.classList.remove('sticky', 'top-0');
+        }
+    });
+
+</script>
 </body>
 </html>
